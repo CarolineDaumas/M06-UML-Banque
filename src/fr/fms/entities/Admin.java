@@ -64,16 +64,17 @@ public class Admin extends User {
 	}
 
 	public void createAccount(ArrayList<Customer> customers, Scanner scan) {
-		int id = scan.nextInt();
+		
 		Customer customerSearch = new Customer();
 		// Admin admin = new Admin();
 		System.out.println("Rentrez l'identifiant du client");
-
-		for (int i = 0; i < customers.size(); i++)
+		int id=scan.nextInt();
+		for (int i = 0; i < customers.size(); i++) {
 			if (customers.get(i).getId() == id)
 				customerSearch = customers.get(i);
 			else
 				System.out.println("Identifiant incorrect");
+		}
 
 		System.out.println("Quel type de compte voulez-vous créer (CURRENT/ SAVINGS)?");
 		String choice = scan.next();
