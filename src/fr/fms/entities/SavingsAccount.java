@@ -2,21 +2,30 @@ package fr.fms.entities;
 
 public class SavingsAccount extends Account {
 	
-	int interests;
-	int currentSavingId;
+	private	double interests;
+	private	int currentSavingId;
+	private static int accountNumber=10000000;
 	
-	public SavingsAccount(int id, int balanceBank, Admin admin, int interests,int currentSavingId) {
-		super(id, balanceBank, admin);
+	public SavingsAccount(double balanceBank, Admin admin, double interests,int currentSavingId) {
+		super(currentSavingId, balanceBank);
 		this.setInterests(interests);
 		this.setCurrentSavingId(currentSavingId);
 	}
+	
+	
 
-	public int getInterests() {
+	public SavingsAccount() {
+		super();
+	}
+
+
+
+	public double getInterests() {
 		return interests;
 	}
 
-	public void setInterests(int interests) {
-		this.interests = interests;
+	public void setInterests(double interestRate) {
+		this.interests = interestRate;
 	}
 
 	public int getCurrentSavingId() {
@@ -31,6 +40,19 @@ public class SavingsAccount extends Account {
 	public String toString() {
 		return super.toString() + "SavingsAccount [interests=" + interests + ", currentSavingId=" + currentSavingId
 				+ "]";
+	}
+
+
+
+	public static void setAccountNumber(int accountNumber) {
+	 SavingsAccount.accountNumber++;
+		
+	}
+
+
+
+	public static int getAccountNumber() {
+		return accountNumber;
 	}
 
 }

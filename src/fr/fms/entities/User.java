@@ -7,10 +7,10 @@ public abstract class User {
 	private String lastname;
 	private String email;
 	private String password;
-	private boolean role;
+	private RoleEnum role;
 	
 	
-	public User(int id, String firstname, String lastname, String email, String password, boolean role) {
+	public User(int id, String firstname, String lastname, String email, String password, RoleEnum role) {
 		this.id = id;
 		this.firstname = firstname;
 		this.lastname = lastname;
@@ -18,6 +18,27 @@ public abstract class User {
 		this.password = password;
 		this.role=role;
 	}
+	
+
+
+
+	public User() {
+	
+	}
+	
+	
+
+	public RoleEnum getRole() {
+		return role;
+	}
+
+
+
+
+	public void setRole(RoleEnum role) {
+		this.role = role;
+	}
+
 
 
 
