@@ -89,8 +89,8 @@ public class Admin extends User {
 			current.setOverdraft(overdraft);
 
 			// Creation du numéro de compte
-			CurrentAccount.setAccountNumber(CurrentAccount.getAccountNumber());
-			current.setCurrentAccountId(CurrentAccount.getAccountNumber());
+			CurrentAccount.setAccountNumberTemp(CurrentAccount.getAccountNumberTemp());
+			current.setAccountNumber (CurrentAccount.getAccountNumberTemp());
 			customerSearch.setcAccount(current);
 		} else {
 			SavingsAccount savings = new SavingsAccount();

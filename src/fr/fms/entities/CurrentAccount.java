@@ -1,24 +1,24 @@
 package fr.fms.entities;
 
 public class CurrentAccount extends Account {
-	private int currentAccountId;
+	private int accountNumber;
 	private double overdraft;
-	private static int accountNumber=10000000;
+	private static int accountNumberTemp=10000000;
 
-	public static int getAccountNumber() {
-		return accountNumber;
+	public static int getAccountNumberTemp() {
+		return accountNumberTemp;
 	}
 
 
-	public static void setAccountNumber(int accountNumber) {
-		CurrentAccount.accountNumber ++;
+	public static void setAccountNumberTemp(int accountNumberTemp) {
+		CurrentAccount.accountNumberTemp ++;
 	}
 
 
-	public CurrentAccount( int balanceBank, Admin admin, int currentAccountId, double overdraft) {
-		super(currentAccountId, balanceBank);
-		this.setCurrentAccountId(currentAccountId);
-		;
+	public CurrentAccount( int balanceBank, Admin admin, int accountNumber, double overdraft) {
+		super(accountNumber, balanceBank);
+		//this.setCurrentAccountId(currentAccountId);
+		
 		this.setOverdraft(overdraft);
 	}
 
@@ -28,13 +28,16 @@ public class CurrentAccount extends Account {
 	}
 
 
-	public int getCurrentAccountId() {
-		return currentAccountId;
+
+	public int getAccountNumber() {
+		return accountNumber;
 	}
 
-	public void setCurrentAccountId(int currentAccountId) {
-		this.currentAccountId = currentAccountId;
+
+	public void setAccountNumber(int accountNumber) {
+		this.accountNumber = accountNumber;
 	}
+
 
 	public double getOverdraft() {
 		return overdraft;
@@ -46,6 +49,6 @@ public class CurrentAccount extends Account {
 
 	@Override
 	public String toString() {
-		return super.toString() + "CurrentAccount [currentAccountId=" + currentAccountId + ", overdraft=" + overdraft + "]";
+		return super.toString() + "CurrentAccount [currentAccountId=" + accountNumber + ", overdraft=" + overdraft + "]";
 	}
 }
