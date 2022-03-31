@@ -103,8 +103,8 @@ public class Admin extends User {
 			savings.setInterests(interestRate);
 
 			// Creation du numéro de compte
-			SavingsAccount.setAccountNumber(SavingsAccount.getAccountNumber());
-			savings.setCurrentSavingId(SavingsAccount.getAccountNumber());
+			SavingsAccount.setAccountNumberTemp(SavingsAccount.getAccountNumberTemp());
+			savings.setAccountNumber(SavingsAccount.getAccountNumberTemp());
 			customerSearch.setsAccount(savings);
 
 		}

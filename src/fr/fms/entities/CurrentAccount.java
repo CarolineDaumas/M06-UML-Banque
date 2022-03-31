@@ -15,14 +15,18 @@ public class CurrentAccount extends Account {
 	}
 
 
-	public CurrentAccount( int balanceBank, Admin admin, int accountNumber, double overdraft) {
+	public CurrentAccount( double balanceBank, Admin admin, int accountNumber, double overdraft) {
 		super(accountNumber, balanceBank);
-		//this.setCurrentAccountId(currentAccountId);
-		
 		this.setOverdraft(overdraft);
 	}
 
 	
+	@Override
+	public String toString() {
+		return "CurrentAccount [accountNumber=" + accountNumber + ", overdraft=" + overdraft + "]";
+	}
+
+
 	public CurrentAccount() {
 		super();
 	}
@@ -47,8 +51,5 @@ public class CurrentAccount extends Account {
 		this.overdraft = overdraft2;
 	}
 
-	@Override
-	public String toString() {
-		return super.toString() + "CurrentAccount [currentAccountId=" + accountNumber + ", overdraft=" + overdraft + "]";
-	}
+	
 }

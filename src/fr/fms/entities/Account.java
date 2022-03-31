@@ -28,6 +28,11 @@ public class Account {
 
 	public void setBalanceBank(double balanceBank) {
 		this.balanceBank = balanceBank;
+	}
+
+	@Override
+	public String toString() {
+		return "Account [accountNumber=" + accountNumber + ", balanceBank=" + balanceBank + "]";
 	}	
 	
 	

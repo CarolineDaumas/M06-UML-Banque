@@ -3,13 +3,12 @@ package fr.fms.entities;
 public class SavingsAccount extends Account {
 	
 	private	double interests;
-	private	int currentSavingId;
-	private static int accountNumber=10000000;
+	private	int accountNumber;
+	private static int accountNumberTemp=10000000;
 	
-	public SavingsAccount(double balanceBank, Admin admin, double interests,int currentSavingId) {
-		super(currentSavingId, balanceBank);
+	public SavingsAccount(double balanceBank, Admin admin, double interests,int accountNumber) {
+		super(accountNumber, balanceBank);
 		this.setInterests(interests);
-		this.setCurrentSavingId(currentSavingId);
 	}
 	
 	
@@ -28,31 +27,40 @@ public class SavingsAccount extends Account {
 		this.interests = interestRate;
 	}
 
-	public int getCurrentSavingId() {
-		return currentSavingId;
+	
+
+	public static int getAccountNumberTemp() {
+		return accountNumberTemp;
 	}
 
-	public void setCurrentSavingId(int currentSavingId) {
-		this.currentSavingId = currentSavingId;
+
+
+	public static void setAccountNumberTemp(int accountNumberTemp) {
+		SavingsAccount.accountNumberTemp ++;
 	}
+
+
 
 	@Override
 	public String toString() {
-		return super.toString() + "SavingsAccount [interests=" + interests + ", currentSavingId=" + currentSavingId
+		return super.toString() + "SavingsAccount [interests=" + interests + ", currentSavingId=" + accountNumber
 				+ "]";
 	}
 
 
 
-	public static void setAccountNumber(int accountNumber) {
-	 SavingsAccount.accountNumber++;
-		
-	}
-
-
-
-	public static int getAccountNumber() {
+	public int getAccountNumber() {
 		return accountNumber;
 	}
+
+
+
+	public void setAccountNumber(int accountNumber) {
+		this.accountNumber = accountNumber;
+	}
+
+
+
+
 
 }
