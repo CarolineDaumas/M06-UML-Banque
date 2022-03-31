@@ -1,10 +1,7 @@
 package fr.fms.entities;
 
-import java.security.DrbgParameters.NextBytes;
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import javax.management.loading.PrivateClassLoader;
 
 public class Admin extends User {
 
