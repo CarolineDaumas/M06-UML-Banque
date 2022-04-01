@@ -39,21 +39,6 @@ public class TestMain {
 		admin.createAccount(admin, 1, saving1);
 		admin.createAccount(admin, 1, current1);
 		System.out.println(customer);
-		
-		
-//		Scanner scan= new Scanner(System.in);
-//		IBanking iBanking = new IBankingImpl();
-//		
-//		Admin admin=new Admin();
-//		
-//		admin.createCustomer(scan);
-//		admin.createCustomer(scan);
-//		admin.createAccount(admin.getCusts(), scan);
-//		iBanking.deposit(admin.getCusts(), scan);
-//		
-//		
-//		scan.close();
-
 	}
 
 }
