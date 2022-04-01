@@ -33,9 +33,13 @@ public class TestMain {
 		
 		admin.createCustomer(custToAdd, admin);
 
+		System.out.println(current1);
 		System.out.println(customers.size());
 		
-		admin.createAccount(admin, 1, saving2);
+		admin.createAccount(admin, 1, saving1);
+		admin.createAccount(admin, 1, current1);
+		System.out.println(customer);
+		
 		
 //		Scanner scan= new Scanner(System.in);
 //		IBanking iBanking = new IBankingImpl();

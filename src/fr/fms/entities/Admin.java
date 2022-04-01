@@ -63,17 +63,21 @@ public class Admin extends User {
 	public void createAccount(Admin admin, int customerId, Account account) {
 
 		Customer customerSearch = new Customer();
+		
+		System.out.println(admin.getCusts().get(0).getId());
 
 		for (int i = 0; i < admin.getCusts().size(); i++) {
 			if (admin.getCusts().get(i).getId() == customerId)
 				customerSearch = admin.getCusts().get(i);
-			else
-				System.out.println("Identifiant incorrect");
 		}
-
-		if (customerSearch.getcAccount().getAccountNature().equals("CURRENT")) {
-			customerSearch.setcAccount(account);
+		
+		if (account.getAccountNature().equals(AccountNature.valueOf("CURRENT"))) {
+			customerSearch.setcAccount((CurrentAccount) account);
+		} else if (account.getAccountNature().equals(AccountNature.valueOf("SAVINGS"))) {
+			customerSearch.setsAccount((SavingsAccount) account);
 		}
+		
+		
 //
 //		System.out.println("Quel type de compte voulez-vous créer (CURRENT/ SAVINGS)?");
 //		String choice = scan.next();

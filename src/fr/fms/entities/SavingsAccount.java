@@ -2,7 +2,6 @@ package fr.fms.entities;
 
 public class SavingsAccount extends Account {
 
-	private int accountNumber;
 	private double interests;
 	private static int accountNumberTemp = 10000000;
 
@@ -31,17 +30,9 @@ public class SavingsAccount extends Account {
 		SavingsAccount.accountNumberTemp++;
 	}
 
-	public int getAccountNumber() {
-		return accountNumber;
-	}
-
-	public void setAccountNumber(int accountNumber) {
-		this.accountNumber = accountNumber;
-	}
-
 	@Override
 	public String toString() {
-		return "SavingsAccount [accountNumber=" + accountNumber + ", interests=" + interests + "]";
+		return super.toString() + "SavingsAccount [interests=" + interests + "]";
 	}
 
 }
