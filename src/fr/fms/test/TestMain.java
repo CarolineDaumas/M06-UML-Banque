@@ -20,7 +20,7 @@ public class TestMain {
 		admin.createAccount(admin.getCusts(), scan);
 		iBanking.deposit(admin.getCusts(), scan);
 		
-		
+		System.out.println(admin.getCusts().get(0).getcAccount().getBalanceBank());
 		scan.close();
 		
 		

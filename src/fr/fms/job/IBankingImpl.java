@@ -28,24 +28,21 @@ public class IBankingImpl implements IBanking {
 				System.out.println("Identifiant incorrect");
 		}
 		// Affichage des comptes
-		System.out.println("Numéro du compte courant " + currentAccount.getAccountNumber());
-		//System.out.println("Numéro du compte épargne " + savingsAccount.getAccountNumber());
+		if(currentAccount!=null) System.out.println("Numéro du compte courant " + currentAccount.getAccountNumber());
+		if(savingsAccount!=null)System.out.println("Numéro du compte épargne " + savingsAccount.getAccountNumber());
 		// Ajout du montant
 		System.out.println("Choisissez un numéro de compte à créditer");
 		int accountNumberToCredit = scan.nextInt();
 
-		if (accountNumberToCredit == currentAccount.getAccountNumber()) {
+		if (currentAccount!=null && accountNumberToCredit == currentAccount.getAccountNumber()) {
 			System.out.println("Quel montant voulez-vous déposer sur ce compte courant?");
 			double amountToDeposit = scan.nextDouble();
-//				double amount = currentAccount.getAccountNumber()+amountToDeposit;
-//				currentAccount.setBalanceBank(amount);
-			currentAccount.setBalanceBank(+amountToDeposit);
-		} else {
+			currentAccount.setBalanceBank(currentAccount.getBalanceBank()+amountToDeposit);
+		} else
+			if (savingsAccount!=null && accountNumberToCredit == savingsAccount.getAccountNumber()){
 			System.out.println("Quel montant voulez-vous déposer sur ce compte d'épargne?");
 			double amountToDeposit = scan.nextDouble();
-//				double amount = savingsAccount.getAccountNumber()+amountToDeposit;
-//				savingsAccount.setBalanceBank(amount);
-			savingsAccount.setBalanceBank(+amountToDeposit);
+			savingsAccount.setBalanceBank(savingsAccount.getBalanceBank()+amountToDeposit);
 		}
 
 		System.out.println(currentAccount.getBalanceBank());
