@@ -15,9 +15,9 @@ public class TestMain {
 		
 		Admin admin=new Admin();
 		
-		admin.createCustomer(scan);
-		admin.createCustomer(scan);
-		admin.createAccount(admin.getCusts(), scan);
+		// admin.createCustomer(scan);
+
+		// admin.createAccount(admin.getCusts(), scan);
 		iBanking.deposit(admin.getCusts(), scan);
 		
 		System.out.println(admin.getCusts().get(0).getcAccount().getBalanceBank());
