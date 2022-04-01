@@ -15,13 +15,15 @@ import fr.fms.job.IBankingImpl;
 public class TestMain {
 
 	public static void main(String[] args) {
+		//Metier instance
+		IBanking iBanking = new IBankingImpl();
 
 		ArrayList<Customer> customers = new ArrayList<Customer>();
 		
-		CurrentAccount current1 = new CurrentAccount(5000.50, null, 0001, 1000.0, AccountNature.CURRENT);
-		CurrentAccount current2 = new CurrentAccount(17000.50, null, 0002, 15000.0, AccountNature.CURRENT);
-		SavingsAccount saving1 = new SavingsAccount(10000.0, null, 1000, 5.4, AccountNature.SAVINGS);
-		SavingsAccount saving2 = new SavingsAccount(6000.1, null, 2000, 2.3, AccountNature.SAVINGS);
+		CurrentAccount current1 = new CurrentAccount(5000.50, null, 10001, 1000.0, AccountNature.CURRENT);
+		CurrentAccount current2 = new CurrentAccount(17000.50, null, 10002, 15000.0, AccountNature.CURRENT);
+		SavingsAccount saving1 = new SavingsAccount(10000.0, null, 20001, 5.4, AccountNature.SAVINGS);
+		SavingsAccount saving2 = new SavingsAccount(6000.1, null, 20002, 2.3, AccountNature.SAVINGS);
 
 		Customer customer = new Customer(1, "abc", "paul", "paul@abc.fr", "123", RoleEnum.CLIENT, null, null, null);
 		Customer customer2 = new Customer(2, "abcy", "jack", "jack@abcy.fr", "1234", RoleEnum.CLIENT, null, null, null);
@@ -38,6 +40,12 @@ public class TestMain {
 		
 		admin.createAccount(admin, 1, saving1);
 		admin.createAccount(admin, 1, current1);
+		admin.createAccount(admin, 2, current2);
+		
+		admin.deposit(admin, 15000, 10001);
+		
+		iBanking.transfer(admin, 50000, 20001, 10001);
+		
 		System.out.println(customer);
 	}
 

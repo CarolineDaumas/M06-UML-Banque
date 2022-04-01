@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Admin extends User {
 
 	private ArrayList<Customer> custs = new ArrayList<>();
+	
 
 	public Admin(int id, String firstname, String lastname, String email, String password, RoleEnum role,
 			ArrayList<Customer> custs) {
