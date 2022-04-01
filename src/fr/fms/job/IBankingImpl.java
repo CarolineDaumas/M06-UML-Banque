@@ -29,7 +29,8 @@ public class IBankingImpl implements IBanking {
 		}
 		// Affichage des comptes
 		System.out.println("Numéro du compte courant " + currentAccount.getAccountNumber());
-		//System.out.println("Numéro du compte épargne " + savingsAccount.getAccountNumber());
+		// System.out.println("Numéro du compte épargne " +
+		// savingsAccount.getAccountNumber());
 		// Ajout du montant
 		System.out.println("Choisissez un numéro de compte à créditer");
 		int accountNumberToCredit = scan.nextInt();
