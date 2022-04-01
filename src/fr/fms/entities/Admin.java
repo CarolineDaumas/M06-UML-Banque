@@ -31,7 +31,6 @@ public class Admin extends User {
 	}
 
 	public void createCustomer(Customer customer, Admin admin) {
-
 		admin.getCusts().add(customer);
 	}
 

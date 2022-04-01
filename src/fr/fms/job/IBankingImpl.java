@@ -15,54 +15,34 @@ public class IBankingImpl implements IBanking {
 	public void deposit(Admin admin, double amount, int accountNumber) {
 
 		for (int i = 0; i < admin.getCusts().size(); i++) {
-			if (admin.getCusts().get(i).getcAccount().getAccountNumber() == accountNumber) {
-				
-			} else if (admin.getCusts().get(i).getsAccount().getAccountNumber() == accountNumber) {
-
-			} else
-				System.out.println("Identifiant incorrect");
+			if (admin.getCusts().get(i).getcAccount() != null && admin.getCusts().get(i).getcAccount().getAccountNumber() == accountNumber) {
+				double balanceBankCurrent = admin.getCusts().get(i).getcAccount().getBalanceBank();
+				admin.getCusts().get(i).getcAccount().setBalanceBank(amount + balanceBankCurrent);
+			} else if (admin.getCusts().get(i).getsAccount() != null && admin.getCusts().get(i).getsAccount().getAccountNumber() == accountNumber) {
+				double balanceBankSavings = admin.getCusts().get(i).getsAccount().getBalanceBank();
+				admin.getCusts().get(i).getsAccount().setBalanceBank(amount + balanceBankSavings);
+			} 
 		}
-
-//		// Customer customerSearch = new Customer();
-//		CurrentAccount currentAccount = new CurrentAccount();
-//		SavingsAccount savingsAccount = new SavingsAccount();
-//		// Admin admin = new Admin();
-//		System.out.println("Rentrez l'identifiant du client");
-//		int id = scan.nextInt();
-//
-//		if (currentAccount != null)
-//			System.out.println("Num�ro du compte courant " + currentAccount.getAccountNumber());
-//		if (savingsAccount != null)
-//			System.out.println("Num�ro du compte �pargne " + savingsAccount.getAccountNumber());
-//
-//		// Ajout du montant
-//		System.out.println("Choisissez un num�ro de compte � cr�diter");
-//		int accountNumberToCredit = scan.nextInt();
-//
-//		if (currentAccount != null && accountNumberToCredit == currentAccount.getAccountNumber()) {
-//			System.out.println("Quel montant voulez-vous d�poser sur ce compte courant?");
-//			double amountToDeposit = scan.nextDouble();
-//			currentAccount.setBalanceBank(currentAccount.getBalanceBank() + amountToDeposit);
-//		} else if (savingsAccount != null && accountNumberToCredit == savingsAccount.getAccountNumber()) {
-//			System.out.println("Quel montant voulez-vous d�poser sur ce compte d'�pargne?");
-//			double amountToDeposit = scan.nextDouble();
-//			savingsAccount.setBalanceBank(savingsAccount.getBalanceBank() + amountToDeposit);
-//		}
-//
-//		System.out.println(currentAccount.getBalanceBank());
-
 	}
 
 	@Override
-	public void withdrawal(double amount) {
-		// TODO Auto-generated method stub
+	public void withdrawal(Admin admin, double amount, int accountNumber) {
+		for (int i = 0; i < admin.getCusts().size(); i++) {
+			if (admin.getCusts().get(i).getcAccount() != null && admin.getCusts().get(i).getcAccount().getAccountNumber() == accountNumber && admin.getCusts().get(i).getcAccount().getBalanceBank() > amount) {
+				double balanceBankCurrent = admin.getCusts().get(i).getcAccount().getBalanceBank();
+				admin.getCusts().get(i).getcAccount().setBalanceBank(balanceBankCurrent - amount);
+			} else if (admin.getCusts().get(i).getsAccount() != null && admin.getCusts().get(i).getsAccount().getAccountNumber() == accountNumber && admin.getCusts().get(i).getsAccount().getBalanceBank() > amount) {
+				double balanceBankSavings = admin.getCusts().get(i).getsAccount().getBalanceBank();
+				admin.getCusts().get(i).getsAccount().setBalanceBank(balanceBankSavings - amount);
+			} 
+		}
 
 	}
 
 	@Override
 	public void transfer(Admin admin, double amount, int accountNumberSrc, int accountNumberTgt) {
-		// retait
-		// deposer
+		withdrawal(admin, amount, accountNumberSrc);
+		deposit(admin, amount, accountNumberTgt);
 	}
 
 }

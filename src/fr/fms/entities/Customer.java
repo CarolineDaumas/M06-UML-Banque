@@ -26,6 +26,9 @@ public class Customer extends User {
 		this.ops = ops;
 	}
 
+	public Customer(int id, String firstname, String lastname, String email, String password, RoleEnum role) {
+		super(id, firstname, lastname, email, password, role);
+	}
 	public Customer() {
 		super();
 	}
