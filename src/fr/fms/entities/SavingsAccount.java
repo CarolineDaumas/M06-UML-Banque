@@ -3,15 +3,12 @@ package fr.fms.entities;
 public class SavingsAccount extends Account {
 
 	private double interests;
-	private static int accountNumberTemp = 10000000;
+	// private static int accountNumberTemp = 10000000;
 
-	public SavingsAccount(double balanceBank, Admin admin, int accountNumber, double interests, AccountNature accountNature) {
-		super(accountNumber, balanceBank, accountNature);
+	public SavingsAccount(int accountNumber, double balanceBank, double interests, AccountNature accountNature,
+			Admin admin, Customer customer) {
+		super(accountNumber, balanceBank, accountNature, admin, customer);
 		this.setInterests(interests);
-	}
-
-	public SavingsAccount() {
-		super();
 	}
 
 	public double getInterests() {
@@ -22,17 +19,17 @@ public class SavingsAccount extends Account {
 		this.interests = interestRate;
 	}
 
-	public static int getAccountNumberTemp() {
-		return accountNumberTemp;
-	}
-
-	public static void setAccountNumberTemp(int accountNumberTemp) {
-		SavingsAccount.accountNumberTemp++;
-	}
-
 	@Override
 	public String toString() {
-		return super.toString() + "SavingsAccount [interests=" + interests + "]";
+		return super.toString() + ", interests=" + interests + "]\n";
 	}
+
+//	public static int getAccountNumberTemp() {
+//		return accountNumberTemp;
+//	}
+//
+//	public static void setAccountNumberTemp(int accountNumberTemp) {
+//		SavingsAccount.accountNumberTemp++;
+//	}
 
 }

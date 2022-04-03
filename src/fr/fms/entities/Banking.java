@@ -10,6 +10,14 @@ public class Banking {
 	private double amount;
 	private User user;
 	
+	/**
+	 * 
+	 * @param id
+	 * @param date
+	 * @param bankingNature
+	 * @param amount
+	 * @param user
+	 */
 	public Banking(int id, Date date, BankingNature bankingNature, double amount, User user) {
 		this.id = id;
 		this.date = date;
@@ -60,8 +68,8 @@ public class Banking {
 	
 	@Override
 	public String toString() {
-		return "Banking [id=" + id + ", date=" + date + ", bankingNature=" + bankingNature + ", amount=" + amount
-				+ ", user=" + user + "]";
+		return "Banking Number: " + id + ", date: " + date + ", bankingNature:" + bankingNature + ", amount: " + amount
+				+ ", user: [" + user.getFirstname() + "/ "+ user.getRole()+ "]\n";
 	}
 	
 	
