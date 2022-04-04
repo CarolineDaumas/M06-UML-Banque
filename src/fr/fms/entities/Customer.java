@@ -7,43 +7,65 @@ import java.util.ArrayList;
  * @author Stagiaires11P, Stagiaires11P, Stagiaires11P, Stagiaires11P
  *
  */
-public class Customer extends User {
+public class Customer {
 
-//	private static int idTemp = 0;
+	private int id;
+	private String firstname;
+	private String lastname;
+	private String email;
+	private ArrayList<Operation> operations;
 
-	
-
-	/**
-	 * 
-	 * @param id
-	 * @param firstname
-	 * @param lastname
-	 * @param email
-	 * @param password
-	 * @param role
-	 * @param cAccount
-	 * @param sAccount
-	 * @param ops
-	 */
-	public Customer(int id, String firstname, String lastname, String email, String password, RoleEnum role, ArrayList<Account> accounts, ArrayList<Banking> bankings ) {
-		super(id, firstname, lastname, email, password, role, bankings, accounts);
-	}
-
-	public Customer() {
-		super();
+	public Customer(int id, String firstname, String lastname, String email) {
+		this.id = id;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
 	}
 
 	@Override
 	public String toString() {
-		
-		return super.toString();
+		return "Customer [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", email=" + email
+				+ ", operations=" + operations + "]";
 	}
-	
-//	public static int getIdTemp() {
-//		return idTemp;
-//	}
-//
-//	public static void setIdTemp(int idTemp) {
-//		Customer.idTemp++;
-//	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public ArrayList<Operation> getOperations() {
+		return operations;
+	}
+
+	public void setOperations(ArrayList<Operation> operations) {
+		this.operations = operations;
+	}
+
 }

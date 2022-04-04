@@ -4,57 +4,33 @@ import java.util.ArrayList;
 
 /**
  * 
- * @author Stagiaires11P, Stagiaires?P, Stagiaires?P, Stagiaires?P, 
+ * @author Stagiaires11P, Stagiaires?P, Stagiaires?P, Stagiaires?P,
  *
  */
-public class Account {
+public abstract class Account {
 
 	private int accountNumber;
 	private double balanceBank;
-	private AccountNature accountNature;
 	private Customer customer;
-	private Admin admin;
-	private ArrayList<Banking> bankings;
+	private ArrayList<Operation> operations;
 
-	/**
-	 * 
-	 * @param accountNumber : like id (unique & primary key)
-	 * @param balanceBank
-	 * @param accountNature
-	 */
-	public Account(int accountNumber, double balanceBank, AccountNature accountNature, Admin admin, Customer customer, ArrayList<Banking> bankings) {
-		super();
+	public Account(int accountNumber, double balanceBank, Customer customer) {
 		this.accountNumber = accountNumber;
 		this.balanceBank = balanceBank;
-		this.accountNature = accountNature;
-		this.admin = admin;
-		this.customer = customer;
-		this.bankings = new ArrayList<Banking>();
-	}
-
-	public ArrayList<Banking> getBankings() {
-		return bankings;
-	}
-
-	public void setBankings(ArrayList<Banking> bankings) {
-		this.bankings = bankings;
-	}
-
-	public Customer getCustomer() {
-		return customer;
-	}
-
-	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
 
-	public Admin getAdmin() {
-		return admin;
+	public Account(int accountNumber, double balanceBank) {
+		this.accountNumber = accountNumber;
+		this.balanceBank = balanceBank;
+	}
+	@Override
+	public String toString() {
+		return "Account [accountNumber=" + accountNumber + ", balanceBank=" + balanceBank + ", customer=" + customer
+				+ ", operations=" + operations + "]";
 	}
 
-	public void setAdmin(Admin admin) {
-		this.admin = admin;
-	}
+
 
 	public int getAccountNumber() {
 		return accountNumber;
@@ -72,17 +48,19 @@ public class Account {
 		this.balanceBank = balanceBank;
 	}
 
-	@Override
-	public String toString() {
-		return " [accountNumber=" + accountNumber + ", balanceBank=" + balanceBank ;
+	public Customer getCustomer() {
+		return customer;
 	}
 
-	public AccountNature getAccountNature() {
-		return accountNature;
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
-	public void setAccountNature(AccountNature accountNature) {
-		this.accountNature = accountNature;
+	public ArrayList<Operation> getOperations() {
+		return operations;
 	}
 
+	public void setOperations(ArrayList<Operation> operations) {
+		this.operations = operations;
+	}
 }
