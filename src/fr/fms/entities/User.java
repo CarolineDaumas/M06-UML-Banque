@@ -10,7 +10,7 @@ public class User {
 	private String email;
 	private String password;
 	private RoleEnum role;
-	private ArrayList<Account> accounts = new ArrayList<Account>();
+	private ArrayList<Account> accounts;
 	private ArrayList<Banking> bankings ;
 
 	public User(int id, String firstname, String lastname, String email, String password, RoleEnum role,
@@ -21,7 +21,7 @@ public class User {
 		this.email = email;
 		this.password = password;
 		this.role = role;
-		this.bankings = bankings;
+		this.bankings = new ArrayList<>();
 		this.accounts = new ArrayList<>();
 
 	}

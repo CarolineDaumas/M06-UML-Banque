@@ -20,16 +20,21 @@ public class TestMain {
 	public static ArrayList<Customer> bankCustomers = new ArrayList<Customer>();
 	public static ArrayList<Customer> customers = new ArrayList<Customer>();
 	public static ArrayList<Account> accounts = new ArrayList<Account>();
+	
+	//Toutes les operations de l'établissement 
 	public static ArrayList<Banking> bankings = new ArrayList<Banking>();
 
 	public static void main(String[] args) {
 		// Metier instance
 		IBanking iBanking = new IBankingImpl();
-		CurrentAccount current1 = new CurrentAccount(10001, 5000.5, 1000., AccountNature.CURRENT, null, null);
-		CurrentAccount current2 = new CurrentAccount(10002, 17000.50, 1000.0, AccountNature.CURRENT, null, null);
-		SavingsAccount saving1 = new SavingsAccount(20001, 10000.0, 5.4, AccountNature.SAVINGS, null, null);
-		SavingsAccount saving2 = new SavingsAccount(20002, 6000.1, 2.3, AccountNature.SAVINGS, null, null);
-
+		
+		/*Instantiation des comptes*/
+		CurrentAccount current1 = new CurrentAccount(10001, 5000.5, 1000., AccountNature.CURRENT, null, null, null);
+		CurrentAccount current2 = new CurrentAccount(10002, 17000.50, 1000.0, AccountNature.CURRENT, null, null, null);
+		SavingsAccount saving1 = new SavingsAccount(20001, 10000.0, 5.4, AccountNature.SAVINGS, null, null, null);
+		SavingsAccount saving2 = new SavingsAccount(20002, 6000.1, 2.3, AccountNature.SAVINGS, null, null, null);
+		
+		/*Instantiation des Clients*/
 		Customer customer1 = new Customer(1, "fisrtCust1", "lastCust1", "emailCust1", "pwdCust1", RoleEnum.CLIENT, null,
 				null);
 		Customer customer2 = new Customer(2, "fisrtCust2", "lastCust2", "emailCust2", "pwdCust2", RoleEnum.CLIENT, null,
@@ -60,21 +65,27 @@ public class TestMain {
 		iBanking.deposit(admin, 15000, 10001);
 		iBanking.deposit(admin, 50, 10002);
 		iBanking.deposit(customer1, 150, 20001);
-		iBanking.deposit(admin, 120, 20002);
-		System.out.println(bankings);
+		iBanking.deposit(custToAdd, 120, 20002);
+		iBanking.deposit(admin, 800, 20002);
+		//System.out.println(bankings);
+		
+		System.out.println("Account bankings: \n" +saving2.getBankings());
+		System.out.println("admin bankings: \n" +admin.getBankings());
+		System.out.println("customer bankings: \n" +customer1.getBankings());
 
 		System.out.println("\n********************** Withdrawal method *********************************\n");
 		System.out.println("before "+customer1.getAccounts().get(0).getBalanceBank());
 		iBanking.withdrawal(admin, 459, 10001);
 		System.out.println("after "+customer1.getAccounts().get(0).getBalanceBank());
 		iBanking.withdrawal(customer1, 1111, 10001);
-		System.out.println(bankings);
+	//	System.out.println(bankings);
 		System.out.println("after "+customer1.getAccounts().get(0).getBalanceBank());
 		
 		System.out.println("\n********************** Transfer method *********************************\n");
 		System.out.println("befor transfer: "+customer1.getAccounts().get(0).getBalanceBank());
 		System.out.println("befor transfer: "+customer1.getAccounts().get(1).getBalanceBank());
-		iBanking.transfer(admin,230, 20001, 10001);
+		iBanking.transfer(admin,20000030, 10001, 10001);
+		iBanking.transfer(customer1,20, 20001, 10001);
 		System.out.println("befor transfer: "+customer1.getAccounts().get(0).getBalanceBank());
 		System.out.println("befor transfer: "+customer1.getAccounts().get(1).getBalanceBank());
 		System.out.println(bankings);

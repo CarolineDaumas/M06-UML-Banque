@@ -1,13 +1,15 @@
 package fr.fms.entities;
 
+import java.util.ArrayList;
+
 public class SavingsAccount extends Account {
 
 	private double interests;
 	// private static int accountNumberTemp = 10000000;
 
 	public SavingsAccount(int accountNumber, double balanceBank, double interests, AccountNature accountNature,
-			Admin admin, Customer customer) {
-		super(accountNumber, balanceBank, accountNature, admin, customer);
+			Admin admin, Customer customer, ArrayList<Banking> bankings) {
+		super(accountNumber, balanceBank, accountNature, admin, customer, bankings);
 		this.setInterests(interests);
 	}
 
@@ -33,3 +35,4 @@ public class SavingsAccount extends Account {
 //	}
 
 }
+	

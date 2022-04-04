@@ -29,14 +29,21 @@ public class IBankingImpl implements IBanking {
 				found++; //the searched account found
 				double newBbalanceBankCurrent = user.getAccounts().get(i).getBalanceBank() + amount;
 				user.getAccounts().get(i).setBalanceBank(newBbalanceBankCurrent);
+				
 				//
-				banking.setId(TestMain.bankings.size() + 1);
+				banking.setId(TestMain.bankings.size() +1);
 				banking.setAmount(amount);
 				banking.setBankingNature(BankingNature.DEPOSITE);
 				banking.setDate(new Date());
 				banking.setUser(user);
-				TestMain.bankings.add(banking);
-				user.setBankings(TestMain.bankings);
+				//Toutes les operation de l'etablissement 
+				//TestMain.bankings.add(banking);
+				//affecter l'opération à l"exécutant
+				user.getBankings().add(banking);
+				//affetcter l'operation au compte concerné 
+				Account account = user.getAccounts().get(i);
+				account.getBankings().add(banking);
+				
 				i = user.getAccounts().size(); // sortir de la boucle
 			}
 
@@ -79,8 +86,15 @@ public class IBankingImpl implements IBanking {
 					banking.setBankingNature(BankingNature.WITHDRAWAL);
 					banking.setDate(new Date());
 					banking.setUser(user);
+					
+					//Toutes les operation de l'etablissement 
 					TestMain.bankings.add(banking);
-					user.setBankings(TestMain.bankings);
+					//affecter l'opération à l"exécutant
+					user.getBankings().add(banking);
+					//affetcter l'operation au compte concerné 
+					Account account = user.getAccounts().get(i);
+					account.getBankings().add(banking);
+					
 					i = user.getAccounts().size(); // sortir de la boucle
 				}
 				if (condition == 0)
@@ -99,10 +113,11 @@ public class IBankingImpl implements IBanking {
 	public void transfer(User user, double amount, int accountNumberSrc, int accountNumberTgt) {
 		Banking banking = new Banking(0, null, null, amount, user);
 
+		
 		int lastBankingIndex = TestMain.bankings.size();
 
 		withdrawal(user, amount, accountNumberSrc);
-
+		//if (withdrawal(user, amount, accountNumberSrc)) {//il faudrait passer le return de la methode withdrawal pour boolean
 		if (lastBankingIndex < TestMain.bankings.size()) {
 			deposit(user, amount, accountNumberTgt);
 

@@ -1,5 +1,7 @@
 package fr.fms.entities;
 
+import java.util.ArrayList;
+
 /**
  * 
  * @author Stagiaires11P, Stagiaires?P, Stagiaires?P, Stagiaires?P, 
@@ -12,6 +14,7 @@ public class Account {
 	private AccountNature accountNature;
 	private Customer customer;
 	private Admin admin;
+	private ArrayList<Banking> bankings;
 
 	/**
 	 * 
@@ -19,13 +22,22 @@ public class Account {
 	 * @param balanceBank
 	 * @param accountNature
 	 */
-	public Account(int accountNumber, double balanceBank, AccountNature accountNature, Admin admin, Customer customer) {
+	public Account(int accountNumber, double balanceBank, AccountNature accountNature, Admin admin, Customer customer, ArrayList<Banking> bankings) {
 		super();
 		this.accountNumber = accountNumber;
 		this.balanceBank = balanceBank;
 		this.accountNature = accountNature;
 		this.admin = admin;
 		this.customer = customer;
+		this.bankings = new ArrayList<Banking>();
+	}
+
+	public ArrayList<Banking> getBankings() {
+		return bankings;
+	}
+
+	public void setBankings(ArrayList<Banking> bankings) {
+		this.bankings = bankings;
 	}
 
 	public Customer getCustomer() {

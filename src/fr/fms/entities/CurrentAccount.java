@@ -1,13 +1,15 @@
 package fr.fms.entities;
 
+import java.util.ArrayList;
+
 public class CurrentAccount extends Account {
 
 	private double overdraft;
 	// private static int accountNumberTemp = 10000000;
 
 	public CurrentAccount(int accountNumber, double balanceBank, double overdraft, AccountNature accountNature,
-			Admin admin, Customer customer) {
-		super(accountNumber, balanceBank, accountNature, admin, customer);
+			Admin admin, Customer customer, ArrayList<Banking> bankings) {
+		super(accountNumber, balanceBank, accountNature, admin, customer, bankings);
 		this.setOverdraft(overdraft);
 	}
 
